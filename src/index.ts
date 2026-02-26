@@ -17,6 +17,10 @@ interface IdentifyRequest {
     phoneNumber?: string | number;
 }
 
+app.get('/', (req, res) => {
+    res.send('Identity Reconciliation Engine is UP and RUNNING. Use the dashboard to interact.');
+});
+
 app.post('/identify', async (req: Request, res: Response) => {
     try {
         const { email, phoneNumber: rawPhoneNumber } = req.body as IdentifyRequest;
