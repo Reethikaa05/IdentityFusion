@@ -178,7 +178,8 @@ const App: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="p-6 border border-red-900/50 bg-red-950/20 text-red-400 rounded-xl"
+                  className="p-6 border border-red-200 bg-red-50 text-red-600 rounded-xl"
+                  style={{ borderColor: '#fca5a5', backgroundColor: '#fef2f2', color: '#dc2626' }}
                 >
                   <div className="font-bold mb-1">Execution Failed</div>
                   <div className="text-sm opacity-80">{error}</div>
@@ -186,17 +187,17 @@ const App: React.FC = () => {
               )}
 
               {!result && !loading && !error && (
-                <div className="h-full rounded-2xl border border-dashed border-white/5 flex flex-col items-center justify-center p-12 text-center opacity-30">
-                  <Cpu size={48} className="mb-6" />
-                  <div className="font-bold">Awaiting Scan</div>
-                  <div className="text-sm">Connect a node to visualize the identity graph.</div>
+                <div className="h-full rounded-2xl border border-dashed flex flex-col items-center justify-center p-12 text-center opacity-50" style={{ borderColor: '#cbd5e1' }}>
+                  <Cpu size={48} className="mb-6" color="#94a3b8" />
+                  <div className="font-bold text-zinc-500">System Ready</div>
+                  <div className="text-sm text-zinc-500 mt-2">Submit an identifier to visualize the unified graph.</div>
                 </div>
               )}
 
               {loading && (
-                <div className="h-full rounded-2xl bg-zinc-950/30 border border-white/5 flex flex-col items-center justify-center p-12">
-                  <div className="w-12 h-12 border-2 border-white/20 border-t-white rounded-full animate-spin mb-6" />
-                  <div className="font-bold tracking-widest uppercase text-xs">Mapping_Relational_Nodes</div>
+                <div className="h-full rounded-2xl bg-white border flex flex-col items-center justify-center p-12" style={{ borderColor: '#e2e8f0' }}>
+                  <div className="w-12 h-12 border-2 border-slate-200 border-t-indigo-600 rounded-full animate-spin mb-6" style={{ borderColor: '#e2e8f0', borderTopColor: '#4f46e5' }} />
+                  <div className="font-bold tracking-widest uppercase text-xs text-zinc-500">Resolving Data...</div>
                 </div>
               )}
 
@@ -204,14 +205,14 @@ const App: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="card p-8 bg-white/5"
+                  className="card p-8 bg-white"
                 >
-                  <div className="flex items-center justify-between mb-10">
+                  <div className="flex items-center justify-between mb-10 border-b pb-6" style={{ borderColor: '#e2e8f0' }}>
                     <div>
-                      <div className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-2">Primary Identifier</div>
-                      <div className="text-3xl font-black">ROOT_{result.contact.primaryContatctId}</div>
+                      <div className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-2">Primary Contact ID</div>
+                      <div className="text-3xl font-black" style={{ color: '#0f172a' }}>{result.contact.primaryContatctId}</div>
                     </div>
-                    <CheckCircle className="text-emerald-500" size={32} />
+                    <CheckCircle color="#10b981" size={36} />
                   </div>
 
                   <div className="result-group">
@@ -221,37 +222,37 @@ const App: React.FC = () => {
                     <div className="flex flex-wrap gap-2">
                       {result.contact.emails.map((e, idx) => (
                         <div key={e} className={`tag ${idx === 0 ? 'tag-primary' : ''} `}>
-                          {e} {idx === 0 && ' (PR)'}
+                          {e} {idx === 0 && ' (Primary)'}
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="result-group">
+                  <div className="result-group mt-6">
                     <div className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4 flex items-center gap-2">
-                      Linked Phones
+                      Resolved Phone Numbers
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {result.contact.phoneNumbers.map((p, idx) => (
                         <div key={p} className={`tag ${idx === 0 ? 'tag-primary' : ''} `}>
-                          {p} {idx === 0 && ' (PR)'}
+                          {p} {idx === 0 && ' (Primary)'}
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="result-group">
+                  <div className="result-group mt-6 border-t pt-6" style={{ borderColor: '#e2e8f0' }}>
                     <div className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4 flex items-center gap-2">
-                      Linked Nodes
+                      Secondary References
                     </div>
                     {result.contact.secondaryContactIds.length > 0 ? (
                       <div className="flex flex-wrap gap-2">
                         {result.contact.secondaryContactIds.map(id => (
-                          <div key={id} className="tag mono">REF_{id}</div>
+                          <div key={id} className="tag mono">ID: {id}</div>
                         ))}
                       </div>
                     ) : (
-                      <div className="text-sm text-zinc-600 italic">No secondary links found.</div>
+                      <div className="text-sm text-zinc-500 italic">No secondary records found.</div>
                     )}
                   </div>
                 </motion.div>
