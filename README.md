@@ -7,6 +7,10 @@
 
 A sophisticated Full-Stack Customer Identity Resolution service designed to link disparate customer data points (emails and phone numbers) into a unified primary contact profile. This project solves the "Identity Reconciliation" problem by intelligently merging records as new information is captured across different touchpoints.
 
+### 🌐 Live Deployments
+* **Frontend Dashboard**: [https://identity-fusion.vercel.app](https://identity-fusion.vercel.app/)
+* **Hosted Backend API**: `https://identityfusion.onrender.com/identify`
+
 ---
 
 ## 🚀 The Core Logic: How it Works
