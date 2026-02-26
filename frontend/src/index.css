@@ -1,26 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-    --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-    --mesh-1: #d4fc79;
-    --mesh-2: #96e6a1;
-    --mesh-3: #f5f7fa;
-    --mesh-4: #c3cfe2;
+    --bg-gradient: linear-gradient(135deg, #050505 0%, #111111 100%);
+    --mesh-1: #2d0087;
+    --mesh-2: #020024;
+    --mesh-3: #00d2ff;
+    --mesh-4: #3a7bd5;
 
-    --card-bg: rgba(255, 255, 255, 0.65);
-    --card-border: rgba(255, 255, 255, 0.4);
-    --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    --card-bg: rgba(20, 20, 20, 0.4);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 
-    --text-main: #1e1e24;
-    --text-dim: #71717a;
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
 
-    --accent-primary: #18181b;
-    --accent-hover: #27272a;
+    --accent-primary: #ffffff;
+    --accent-hover: #e2e8f0;
 
-    --pill-bg: #f4f4f5;
-    --pill-text: #3f3f46;
-    --pill-active-bg: #1e1e24;
-    --pill-active-text: #ffffff;
+    --pill-bg: rgba(255, 255, 255, 0.05);
+    --pill-text: #e2e8f0;
+    --pill-active-bg: #ffffff;
+    --pill-active-text: #000000;
 }
 
 * {
@@ -66,10 +66,10 @@ body {
     height: 200%;
     z-index: -1;
     background:
-        radial-gradient(circle at 50% 50%, rgba(200, 240, 255, 0.5) 0%, transparent 40%),
-        radial-gradient(circle at 80% 20%, rgba(255, 230, 240, 0.5) 0%, transparent 40%),
-        radial-gradient(circle at 20% 80%, rgba(240, 255, 230, 0.5) 0%, transparent 40%);
-    background-color: #f8fafc;
+        radial-gradient(circle at 50% 50%, rgba(45, 0, 135, 0.4) 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(0, 210, 255, 0.2) 0%, transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(58, 123, 213, 0.3) 0%, transparent 40%);
+    background-color: var(--bg-gradient);
     filter: blur(60px);
     animation: drift 30s linear infinite;
 }
@@ -95,15 +95,15 @@ body {
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgba(25, 25, 25, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--text-main);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     margin-bottom: 2rem;
     backdrop-filter: blur(10px);
 }
@@ -148,10 +148,10 @@ body {
     font-size: 1.125rem;
     font-weight: 500;
     color: var(--text-main);
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid transparent;
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -219,15 +219,15 @@ body {
 
 /* Visualization Display */
 .metric-box {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(10, 10, 10, 0.6);
     border-radius: 24px;
     padding: 1.5rem;
     display: flex;
     align-items: center;
     gap: 1.5rem;
     margin-bottom: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .metric-icon-wrap {
@@ -295,8 +295,8 @@ body {
 
 /* Console embedded seamlessly */
 .bento-console {
-    background: rgba(24, 24, 27, 0.03);
-    border: 1px solid rgba(24, 24, 27, 0.08);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 24px;
     padding: 1.5rem;
     margin-top: 2rem;

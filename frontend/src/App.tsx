@@ -96,7 +96,7 @@ const App: React.FC = () => {
         </div>
 
         <h1 className="hero-title">Certified<br />Influence Platform.</h1>
-        <p style={{ color: '#71717a', fontSize: '1.25rem', maxWidth: '600px', marginBottom: '4rem', fontWeight: 500 }}>
+        <p style={{ color: '#a1a1aa', fontSize: '1.25rem', maxWidth: '600px', marginBottom: '4rem', fontWeight: 500 }}>
           Resolve fragmented customer touchpoints into a single, highly-deterministic source of truth.
         </p>
 
@@ -154,7 +154,7 @@ const App: React.FC = () => {
 
             {/* Seamless Console */}
             <div className="bento-console" ref={consoleRef}>
-              <div style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#18181b', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#f4f4f5', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <Terminal size={14} /> System Trace
               </div>
               {logs.map((log, i) => {
@@ -181,7 +181,7 @@ const App: React.FC = () => {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="bento-card"
-                  style={{ background: '#fef2f2', borderColor: '#fca5a5' }}
+                  style={{ background: 'rgba(239, 68, 68, 0.1)', borderColor: 'rgba(239, 68, 68, 0.4)' }}
                 >
                   <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', color: '#ef4444' }}>
                     <AlertCircle size={32} />
@@ -195,18 +195,18 @@ const App: React.FC = () => {
 
               {!result && !loading && !error && (
                 <div className="bento-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', minHeight: '400px' }}>
-                  <div style={{ width: '80px', height: '80px', borderRadius: '24px', background: 'rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                    <Cpu size={40} color="#a1a1aa" />
+                  <div style={{ width: '80px', height: '80px', borderRadius: '24px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                    <Cpu size={40} color="#71717a" />
                   </div>
-                  <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#18181b' }}>System Standby</div>
-                  <div style={{ color: '#71717a', fontWeight: 500 }}>Waiting for node ingestion...</div>
+                  <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#f4f4f5' }}>System Standby</div>
+                  <div style={{ color: '#a1a1aa', fontWeight: 500 }}>Waiting for node ingestion...</div>
                 </div>
               )}
 
               {loading && (
                 <div className="bento-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', minHeight: '400px' }}>
-                  <div style={{ width: '60px', height: '60px', border: '4px solid #f4f4f5', borderTopColor: '#18181b', borderRadius: '50%', marginBottom: '1.5rem' }} className="animate-spin" />
-                  <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#18181b', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Computing Graph</div>
+                  <div style={{ width: '60px', height: '60px', border: '4px solid rgba(255,255,255,0.1)', borderTopColor: '#fff', borderRadius: '50%', marginBottom: '1.5rem' }} className="animate-spin" />
+                  <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#f4f4f5', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Computing Graph</div>
                 </div>
               )}
 
@@ -222,13 +222,13 @@ const App: React.FC = () => {
                       <CheckCircle size={32} />
                     </div>
                     <div>
-                      <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Unified Primary ID</div>
-                      <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#18181b', lineHeight: 1 }}>{result.contact.primaryContatctId}</div>
+                      <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#a1a1aa', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Unified Primary ID</div>
+                      <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#f4f4f5', lineHeight: 1 }}>{result.contact.primaryContatctId}</div>
                     </div>
                   </div>
 
                   <div style={{ marginBottom: '2rem' }}>
-                    <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#18181b', marginBottom: '0.5rem' }}>Validated Core Emails</h4>
+                    <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#f4f4f5', marginBottom: '0.5rem' }}>Validated Core Emails</h4>
                     <div className="pill-container">
                       {result.contact.emails.map((e, idx) => (
                         <div key={e} className={`data-pill ${idx === 0 ? 'primary' : ''}`}>
@@ -239,7 +239,7 @@ const App: React.FC = () => {
                   </div>
 
                   <div style={{ marginBottom: '2rem' }}>
-                    <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#18181b', marginBottom: '0.5rem' }}>Verified Contact Numbers</h4>
+                    <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#f4f4f5', marginBottom: '0.5rem' }}>Verified Contact Numbers</h4>
                     <div className="pill-container">
                       {result.contact.phoneNumbers.map((p, idx) => (
                         <div key={p} className={`data-pill ${idx === 0 ? 'primary' : ''}`}>
@@ -249,8 +249,8 @@ const App: React.FC = () => {
                     </div>
                   </div>
 
-                  <div style={{ borderTop: '1px solid rgba(0,0,0,0.08)', paddingTop: '1.5rem' }}>
-                    <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#18181b', marginBottom: '0.5rem' }}>Secondary References</h4>
+                  <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1.5rem' }}>
+                    <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#f4f4f5', marginBottom: '0.5rem' }}>Secondary References</h4>
                     {result.contact.secondaryContactIds.length > 0 ? (
                       <div className="pill-container">
                         {result.contact.secondaryContactIds.map(id => (
