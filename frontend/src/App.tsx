@@ -87,172 +87,179 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="space-bg" />
+      <div className="mesh-bg-light" />
 
       <main className="container">
-        <div className="sub-heading">Identity Reconciliation</div>
-        <h1 className="heading">Unified<br />Customer Graph.</h1>
-        <p className="text-dim max-w-lg mb-12">
-          A high-performance engine to resolve fragmented customer data into a single, deterministic source of truth.
+        <div className="header-badge">
+          <Database size={14} /> Identity Recon Engine
+        </div>
+
+        <h1 className="hero-title">Certified<br />Influence Platform.</h1>
+        <p style={{ color: '#71717a', fontSize: '1.25rem', maxWidth: '600px', marginBottom: '4rem', fontWeight: 500 }}>
+          Resolve fragmented customer touchpoints into a single, highly-deterministic source of truth.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Left: Control Panel */}
-          <div className="space-y-8">
-            <div className="card p-8 bg-zinc-950/50">
-              <div className="flex items-center gap-2 mb-8 font-bold">
-                <Database size={18} />
-                Input Node
-              </div>
+        <div className="bento-grid">
+          {/* Left: Input Bento */}
+          <div>
+            <div className="bento-card">
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '2rem' }}>Connect Nodes</h3>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-zinc-500 uppercase tracking-widest">
-                    <Mail size={12} /> Email
-                  </div>
+              <form onSubmit={handleSubmit}>
+                <div className="bento-input-group">
                   <input
                     type="email"
-                    className="input-box"
-                    placeholder="name@company.com"
+                    className="bento-input"
+                    placeholder="Enter email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
+                  <Mail className="input-icon" size={20} />
                 </div>
 
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-zinc-500 uppercase tracking-widest">
-                    <Phone size={12} /> Phone
-                  </div>
+                <div className="bento-input-group">
                   <input
                     type="text"
-                    className="input-box"
-                    placeholder="1234567890"
+                    className="bento-input"
+                    placeholder="Enter phone number"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                   />
+                  <Phone className="input-icon" size={20} />
                 </div>
 
                 <button
                   type="submit"
-                  className="btn-black flex items-center justify-center gap-2"
+                  className="bento-btn"
                   disabled={loading}
                 >
-                  {loading ? <RefreshCcw className="animate-spin" size={20} /> : 'Process Identity'}
-                  {!loading && <ArrowRight size={20} />}
+                  {loading ? <RefreshCcw className="animate-spin" size={24} /> : 'Reconcile Identity Graph'}
+                  {!loading && <ArrowRight size={24} />}
                 </button>
+              </form>
 
-                {result && (
+              {result && (
+                <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
                   <button
                     type="button"
                     onClick={reset}
-                    className="text-xs text-zinc-500 hover:text-white w-full text-center mt-4 transition-colors font-bold uppercase tracking-widest"
+                    style={{ background: 'none', border: 'none', color: '#a1a1aa', fontWeight: 600, cursor: 'pointer' }}
                   >
-                    Clear Results
+                    Reset Connection
                   </button>
-                )}
-              </form>
+                </div>
+              )}
             </div>
 
-            {/* Console Log Tool (Helps verify backend) */}
-            <div className="card">
-              <div className="p-4 flex items-center gap-2 border-b border-white/10 bg-black/40 text-xs font-bold uppercase tracking-widest">
-                <Terminal size={14} /> Console Output
+            {/* Seamless Console */}
+            <div className="bento-console" ref={consoleRef}>
+              <div style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#18181b', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <Terminal size={14} /> System Trace
               </div>
-              <div ref={consoleRef} className="console flex flex-col gap-1">
-                {logs.map((log, i) => (
-                  <div key={i}>
-                    <span className="text-zinc-600">{log.substring(0, 10)}</span>
-                    <span className={log.includes('SUCCESS') ? 'console-green' : log.includes('INIT') ? 'console-blue' : ''}>
-                      {log.substring(10)}
-                    </span>
+              {logs.map((log, i) => {
+                let logClass = "log-entry text";
+                if (log.includes("SUCCESS")) logClass = "log-entry log-success";
+                else if (log.includes("INIT")) logClass = "log-entry log-init";
+                else if (log.includes("ERR") || log.includes("FATAL")) logClass = "log-entry log-err";
+
+                return (
+                  <div key={i} className={logClass}>
+                    <span className="log-time">{log.substring(0, 10)}</span>
+                    {log.substring(10)}
                   </div>
-                ))}
-              </div>
+                )
+              })}
             </div>
           </div>
 
-          {/* Right: Visualization */}
+          {/* Right: Visualization Bento */}
           <div>
             <AnimatePresence mode="wait">
               {error && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="p-6 border border-red-200 bg-red-50 text-red-600 rounded-xl"
-                  style={{ borderColor: '#fca5a5', backgroundColor: '#fef2f2', color: '#dc2626' }}
+                  className="bento-card"
+                  style={{ background: '#fef2f2', borderColor: '#fca5a5' }}
                 >
-                  <div className="font-bold mb-1">Execution Failed</div>
-                  <div className="text-sm opacity-80">{error}</div>
+                  <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', color: '#ef4444' }}>
+                    <AlertCircle size={32} />
+                    <div>
+                      <div style={{ fontWeight: 800, fontSize: '1.25rem' }}>Exception Raised</div>
+                      <div style={{ fontWeight: 500 }}>{error}</div>
+                    </div>
+                  </div>
                 </motion.div>
               )}
 
               {!result && !loading && !error && (
-                <div className="h-full rounded-2xl border border-dashed flex flex-col items-center justify-center p-12 text-center opacity-50" style={{ borderColor: '#cbd5e1' }}>
-                  <Cpu size={48} className="mb-6" color="#94a3b8" />
-                  <div className="font-bold text-zinc-500">System Ready</div>
-                  <div className="text-sm text-zinc-500 mt-2">Submit an identifier to visualize the unified graph.</div>
+                <div className="bento-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', minHeight: '400px' }}>
+                  <div style={{ width: '80px', height: '80px', borderRadius: '24px', background: 'rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                    <Cpu size={40} color="#a1a1aa" />
+                  </div>
+                  <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#18181b' }}>System Standby</div>
+                  <div style={{ color: '#71717a', fontWeight: 500 }}>Waiting for node ingestion...</div>
                 </div>
               )}
 
               {loading && (
-                <div className="h-full rounded-2xl bg-white border flex flex-col items-center justify-center p-12" style={{ borderColor: '#e2e8f0' }}>
-                  <div className="w-12 h-12 border-2 border-slate-200 border-t-indigo-600 rounded-full animate-spin mb-6" style={{ borderColor: '#e2e8f0', borderTopColor: '#4f46e5' }} />
-                  <div className="font-bold tracking-widest uppercase text-xs text-zinc-500">Resolving Data...</div>
+                <div className="bento-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', minHeight: '400px' }}>
+                  <div style={{ width: '60px', height: '60px', border: '4px solid #f4f4f5', borderTopColor: '#18181b', borderRadius: '50%', marginBottom: '1.5rem' }} className="animate-spin" />
+                  <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#18181b', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Computing Graph</div>
                 </div>
               )}
 
               {result && !loading && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="card p-8 bg-white"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="bento-card"
                 >
-                  <div className="flex items-center justify-between mb-10 border-b pb-6" style={{ borderColor: '#e2e8f0' }}>
+                  {/* Metric Box Header */}
+                  <div className="metric-box">
+                    <div className="metric-icon-wrap">
+                      <CheckCircle size={32} />
+                    </div>
                     <div>
-                      <div className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-2">Primary Contact ID</div>
-                      <div className="text-3xl font-black" style={{ color: '#0f172a' }}>{result.contact.primaryContatctId}</div>
+                      <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#71717a', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Unified Primary ID</div>
+                      <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#18181b', lineHeight: 1 }}>{result.contact.primaryContatctId}</div>
                     </div>
-                    <CheckCircle color="#10b981" size={36} />
                   </div>
 
-                  <div className="result-group">
-                    <div className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4 flex items-center gap-2">
-                      Resolved Emails
-                    </div>
-                    <div className="flex flex-wrap gap-2">
+                  <div style={{ marginBottom: '2rem' }}>
+                    <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#18181b', marginBottom: '0.5rem' }}>Validated Core Emails</h4>
+                    <div className="pill-container">
                       {result.contact.emails.map((e, idx) => (
-                        <div key={e} className={`tag ${idx === 0 ? 'tag-primary' : ''} `}>
-                          {e} {idx === 0 && ' (Primary)'}
+                        <div key={e} className={`data-pill ${idx === 0 ? 'primary' : ''}`}>
+                          {e} {idx === 0 && <span className="pill-badge">Primary Node</span>}
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="result-group mt-6">
-                    <div className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4 flex items-center gap-2">
-                      Resolved Phone Numbers
-                    </div>
-                    <div className="flex flex-wrap gap-2">
+                  <div style={{ marginBottom: '2rem' }}>
+                    <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#18181b', marginBottom: '0.5rem' }}>Verified Contact Numbers</h4>
+                    <div className="pill-container">
                       {result.contact.phoneNumbers.map((p, idx) => (
-                        <div key={p} className={`tag ${idx === 0 ? 'tag-primary' : ''} `}>
-                          {p} {idx === 0 && ' (Primary)'}
+                        <div key={p} className={`data-pill ${idx === 0 ? 'primary' : ''}`}>
+                          {p} {idx === 0 && <span className="pill-badge">Primary Node</span>}
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="result-group mt-6 border-t pt-6" style={{ borderColor: '#e2e8f0' }}>
-                    <div className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-4 flex items-center gap-2">
-                      Secondary References
-                    </div>
+                  <div style={{ borderTop: '1px solid rgba(0,0,0,0.08)', paddingTop: '1.5rem' }}>
+                    <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#18181b', marginBottom: '0.5rem' }}>Secondary References</h4>
                     {result.contact.secondaryContactIds.length > 0 ? (
-                      <div className="flex flex-wrap gap-2">
+                      <div className="pill-container">
                         {result.contact.secondaryContactIds.map(id => (
-                          <div key={id} className="tag mono">ID: {id}</div>
+                          <div key={id} className="data-pill" style={{ fontFamily: 'monospace' }}>
+                            REF:{id}
+                          </div>
                         ))}
                       </div>
                     ) : (
-                      <div className="text-sm text-zinc-500 italic">No secondary records found.</div>
+                      <div style={{ color: '#a1a1aa', fontStyle: 'italic', fontWeight: 500 }}>No linked nodes detected.</div>
                     )}
                   </div>
                 </motion.div>
@@ -261,14 +268,6 @@ const App: React.FC = () => {
           </div>
         </div>
       </main>
-
-      <footer className="container py-12 border-t border-white/5 flex justify-between items-center opacity-40">
-        <div className="text-xs font-bold uppercase tracking-widest">Flux.Graph Protocol</div>
-        <div className="flex gap-6 text-xs font-bold uppercase tracking-widest">
-          <span>Status: 1.21GW</span>
-          <span>Latency: {result ? '42ms' : '--'}</span>
-        </div>
-      </footer>
     </div>
   );
 };
