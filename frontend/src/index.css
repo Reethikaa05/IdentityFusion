@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  --primary: #ffffff;
+  --bg: #000000;
+  --accent: #5850ec;
+  --accent-glow: rgba(88, 80, 236, 0.4);
+  --border: rgba(255, 255, 255, 0.1);
+  --text-main: #ffffff;
+  --text-dim: #888888;
+  --surface: #0a0a0a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text-main);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Deep Space Background */
+.space-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(88, 80, 236, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 100% 0%, rgba(236, 88, 80, 0.05) 0%, transparent 30%);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+/* Spatial UI Components */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.input-box {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  color: #fff;
+  width: 100%;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.input-box:focus {
+  outline: none;
+  border-color: #ffffff;
+}
+
+.btn-black {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity 0.2s;
+}
+
+.btn-black:hover {
+  opacity: 0.9;
+}
+
+.btn-black:disabled {
+  background: #333;
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* Typography */
+.heading {
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 0.9;
+  margin-bottom: 2rem;
+}
+
+.sub-heading {
+  font-size: 1rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Result Visualization */
+.result-group {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0;
+}
+
+.tag {
+  background: #111;
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.tag-primary {
+  background: #fff;
+  color: #000;
+  border: none;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Console Logger UI */
+.console {
+  background: #050505;
+  border-top: 1px solid var(--border);
+  padding: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #444;
+  height: 200px;
+  overflow-y: auto;
+}
+
+.console-green {
+  color: #10b981;
+}
+
+.console-blue {
+  color: #3b82f6;
+}
+
+/* Desktop/Mobile handling */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2.5rem;
+  }
+}
