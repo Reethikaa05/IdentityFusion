@@ -9,7 +9,7 @@ A sophisticated Full-Stack Customer Identity Resolution service designed to link
 
 ### 🌐 Live Deployments
 * **Frontend Dashboard**: [https://identity-fusion-unts.vercel.app](https://identity-fusion-unts.vercel.app/)
-* **Hosted Backend API**: [https://identityfusion.onrender.com](https://identityfusion.onrender.com/identify)
+* **Hosted Backend API**: [https://identityfusion.onrender.com](https://identityfusion.onrender.com/)
 
 ---
 
