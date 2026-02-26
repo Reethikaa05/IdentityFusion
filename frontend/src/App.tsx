@@ -8,7 +8,8 @@ import {
   Terminal,
   CheckCircle,
   Cpu,
-  RefreshCcw
+  RefreshCcw,
+  AlertCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
