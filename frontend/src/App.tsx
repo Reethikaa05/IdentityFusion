@@ -1,18 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import {
-  Scan,
   Mail,
   Phone,
-  Zap,
-  Fingerprint,
-  AlertCircle,
   ArrowRight,
   Database,
-  Layers,
-  Network,
-  Globe,
-  Sparkles,
   Terminal,
   CheckCircle,
   Cpu,
